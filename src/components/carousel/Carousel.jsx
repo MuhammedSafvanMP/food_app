@@ -9,8 +9,7 @@ export default function Carousel() {
         const fetchRandomFood = async () => {
             try {
                 
-                const response =  await axios.get(`http://www.themealdb.com/api/json/v1/1/random.php`)
-                // console.log(response.data.meals);
+                const response =  await axios.get(`https://www.themealdb.com/api/json/v1/1/random.php`)
                 setRandomMeal(response.data.meals)
             } catch (error) {
                 toast.error(error)
@@ -20,7 +19,6 @@ export default function Carousel() {
         fetchRandomFood()
 
     }, [])
-    console.log(randomMeal, "ran");
   return (
     <>
 
@@ -28,7 +26,7 @@ export default function Carousel() {
 
 <div class="grid gap-4 p-6">
     <div>
-        <img class="h-auto max-w-full rounded-lg" src={randomMeal[0]?.strMealThumb} alt="" />
+        <img class="h-auto max-w-full rounded-lg" src={randomMeal && randomMeal[0]?.strMealThumb} alt="" />
     </div>
 </div>
     </>
